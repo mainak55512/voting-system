@@ -1,0 +1,11 @@
+{
+  "name": "voting-system",
+  "version": "0.0.1",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "tsc && node ./out/main.js"
+  },
+  "author": "mainak55512",
+  "license": "ISC",
+  "description": ""
+}
