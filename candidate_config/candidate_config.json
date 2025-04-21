@@ -1,0 +1,39 @@
+{
+    "candidates": [
+        {
+            "name": "Alice Johnson",
+            "id": "C001-ALPHANUMERIC16",
+            "party": "Party A"
+        },
+        {
+            "name": "Bob Smith",
+            "id": "C002-ALPHANUMERIC16",
+            "party": "Party B"
+        },
+        {
+            "name": "Charlie Brown",
+            "id": "C003-ALPHANUMERIC16",
+            "party": "Party C"
+        },
+        {
+            "name": "Diana Prince",
+            "id": "C004-ALPHANUMERIC16",
+            "party": "Party D"
+        },
+        {
+            "name": "Ethan Hunt",
+            "id": "C005-ALPHANUMERIC16",
+            "party": "Party E"
+        },
+        {
+            "name": "Fiona Gallagher",
+            "id": "C006-ALPHANUMERIC16",
+            "party": "Party F"
+        },
+        {
+            "name": "George Clooney",
+            "id": "C007-ALPHANUMERIC16",
+            "party": "Party G"
+        }
+    ]
+}

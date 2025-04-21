@@ -1,14 +1,10 @@
-enum Preference {
-	first = 5,
-	second = 4,
-	third = 3,
-	fourth = 2,
-	fifth = 1
-}
+import { setPreference, Preference, getEntries} from "./register";
 
 interface CandidateType {
 	[key: string]: Candidate;
 }
+const entries = getEntries();
+const Preference: Preference = setPreference(entries);
 
 export default class CandidateEntry {
 	private candidateList: CandidateType;
@@ -66,30 +62,8 @@ class Candidate {
 	}
 
 	updateVoteCount(preference: string): void {
-		switch (preference.toLowerCase()) {
-			case "first": {
-				this.vote_count += Preference.first;
-				break;
-			}
-			case "second": {
-				this.vote_count += Preference.second;
-				break;
-			}
-			case "third": {
-				this.vote_count += Preference.third;
-				break;
-			}
-			case "fourth": {
-				this.vote_count += Preference.fourth;
-				break;
-			}
-			case "fifth": {
-				this.vote_count += Preference.fifth;
-				break;
-			}
-			default: {
-				this.vote_count += 0;
-			}
+		if (Preference.hasOwnProperty(preference)) {
+			this.vote_count += Preference[preference];
 		}
 	}
 
