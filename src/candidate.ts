@@ -1,24 +1,27 @@
-import { setPreference, Preference, getEntries} from "./register";
+import { setPreference, Preference, getEntries, CandidateData} from "./register";
 
 interface CandidateType {
 	[key: string]: Candidate;
 }
-const entries = getEntries();
-const Preference: Preference = setPreference(entries);
 
 export default class CandidateEntry {
-	private candidateList: CandidateType;
+	preference: Preference;
+	private candidateList: CandidateType = {};
 
 	constructor() {
-		this.candidateList = {};
+		const entries = getEntries();
+		this.preference = setPreference(entries);
+		entries.candidates.forEach((e: CandidateData) => {
+			this.addCandidate(e.name, e.party, e.id);
+		});
 	}
 
-	addCandidate(name: string, party: string, candidate_id: string): void {
+	private addCandidate(name: string, party: string, candidate_id: string): void {
 		this.candidateList[candidate_id] = new Candidate(name, party, candidate_id);
 	}
 
 	upVote(candidate_id: string, preference: string): void {
-		this.candidateList[candidate_id].updateVoteCount(preference);
+		this.candidateList[candidate_id].updateVoteCount(this.preference,preference);
 	}
 
 	showDetails(): void {
@@ -61,9 +64,9 @@ class Candidate {
 		this.candidate_id = candidate_id;
 	}
 
-	updateVoteCount(preference: string): void {
-		if (Preference.hasOwnProperty(preference)) {
-			this.vote_count += Preference[preference];
+	updateVoteCount(prefList: Preference,preference: string): void {
+		if (prefList.hasOwnProperty(preference)) {
+			this.vote_count += prefList[preference];
 		}
 	}
 

@@ -5,13 +5,13 @@ export interface Preference {
     [key: string]: number;
 }
 
-interface Candidate {
+export interface CandidateData {
     name: string;
     id: string;
     party: string;
 }
 interface ConfigData {
-    candidates: Candidate[];
+    candidates: CandidateData[];
 }
 
 export function getEntries(): ConfigData {
@@ -26,8 +26,4 @@ export function setPreference(configData: ConfigData): Preference {
         preference[`p${i+1}`] = configData.candidates.length - i;
     }
     return preference;
-}
-
-export function getCandidateEntries(configData: ConfigData): Candidate[] {
-    return configData.candidates;
 }
